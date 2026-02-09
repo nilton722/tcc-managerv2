@@ -43,7 +43,7 @@ class DocumentoController extends Controller
     {
         $tcc = Tcc::findOrFail($tccId);
 
-        // $this->authorize('update', $tcc);
+        // // $this->authorize('update', $tcc);
 
         $validated = $request->validate([
             'tipo_documento_id' => 'required|uuid|exists:tipos_documento,id',
@@ -51,10 +51,13 @@ class DocumentoController extends Controller
             'comentarios' => 'nullable|string',
         ]);
 
+        
         $tipoDocumento = TipoDocumento::findOrFail($validated['tipo_documento_id']);
 
+        
         // Validar extensão
         $extensao = '.' . $request->file('arquivo')->getClientOriginalExtension();
+
         if (!$tipoDocumento->isExtensaoPermitida($extensao)) {
             return response()->json([
                 'success' => false,
@@ -62,6 +65,7 @@ class DocumentoController extends Controller
                             $tipoDocumento->getExtensoesFormatadas(),
             ], 422);
         }
+
 
         // Validar tamanho
         $tamanhoBytes = $request->file('arquivo')->getSize();
@@ -122,11 +126,10 @@ class DocumentoController extends Controller
         ], 201);
     }
 
-    public function show(string $id): JsonResponse
+    public function show(string $tccId, string $id): JsonResponse
     {
         $documento = Documento::with(['tipoDocumento', 'tcc', 'uploadPor', 'versaoAnterior'])
-            ->findOrFail($id);
-
+        ->findOrFail($id);
         // $this->authorize('view', $documento->tcc);
 
         return response()->json([
@@ -135,7 +138,7 @@ class DocumentoController extends Controller
         ]);
     }
 
-    public function update(Request $request, string $id): JsonResponse
+    public function update(Request $request,  string $tccId, string $id): JsonResponse
     {
         $documento = Documento::findOrFail($id);
 
@@ -144,6 +147,8 @@ class DocumentoController extends Controller
         $validated = $request->validate([
             'comentarios' => 'nullable|string',
         ]);
+
+        dd('comentarios', $validated);
 
         $documento->update($validated);
 

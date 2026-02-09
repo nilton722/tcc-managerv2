@@ -19,6 +19,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/test-token', function () {
+    return response()->json([
+       'user' => auth()->user(),
+    ]);
+})->middleware('auth:sanctum');
+
+
+
 Route::prefix('v1')->group(function () {
     
     // Autenticação

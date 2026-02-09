@@ -189,7 +189,7 @@ class AuthController extends Controller
 
         if ($usuario) {
             // Implementar lógica de envio de email
-            // $this->authService->sendPasswordResetEmail($usuario);
+            //$this->authService->sendPasswordResetEmail($usuario);
         }
 
         return response()->json([

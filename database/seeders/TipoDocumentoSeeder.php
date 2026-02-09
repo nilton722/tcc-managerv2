@@ -16,7 +16,7 @@ class TipoDocumentoSeeder extends Seeder
             [
                 'nome' => 'Projeto de Pesquisa',
                 'descricao' => 'Documento inicial contendo a proposta do TCC',
-                'extensoes_permitidas' => json_encode(['.pdf', '.doc', '.docx']),
+                'extensoes_permitidas' => '[".pdf", ".doc", ".docx"]',
                 'tamanho_maximo_mb' => 10,
                 'obrigatorio' => true,
                 'ordem_exibicao' => 1,
@@ -24,7 +24,7 @@ class TipoDocumentoSeeder extends Seeder
             [
                 'nome' => 'Relatório de Qualificação',
                 'descricao' => 'Versão preliminar do trabalho para banca de qualificação',
-                'extensoes_permitidas' => json_encode(['.pdf', '.doc', '.docx']),
+                'extensoes_permitidas' => '[".pdf", ".doc", ".docx"]',
                 'tamanho_maximo_mb' => 50,
                 'obrigatorio' => true,
                 'ordem_exibicao' => 2,
@@ -32,7 +32,7 @@ class TipoDocumentoSeeder extends Seeder
             [
                 'nome' => 'Versão Final',
                 'descricao' => 'Versão completa e definitiva do TCC',
-                'extensoes_permitidas' => json_encode(['.pdf']),
+                'extensoes_permitidas' => '[".pdf"]',
                 'tamanho_maximo_mb' => 50,
                 'obrigatorio' => true,
                 'ordem_exibicao' => 3,
@@ -40,7 +40,7 @@ class TipoDocumentoSeeder extends Seeder
             [
                 'nome' => 'Artigo Científico',
                 'descricao' => 'Artigo derivado do TCC (opcional)',
-                'extensoes_permitidas' => json_encode(['.pdf', '.doc', '.docx']),
+                'extensoes_permitidas' => '[".pdf", ".doc", ".docx"]',
                 'tamanho_maximo_mb' => 10,
                 'obrigatorio' => false,
                 'ordem_exibicao' => 4,
@@ -48,7 +48,7 @@ class TipoDocumentoSeeder extends Seeder
             [
                 'nome' => 'Código Fonte',
                 'descricao' => 'Código fonte ou anexos técnicos do trabalho',
-                'extensoes_permitidas' => json_encode(['.zip', '.rar', '.7z', '.tar.gz']),
+                'extensoes_permitidas' => '[".zip", ".rar", ".7z", ".tar.gz"]',
                 'tamanho_maximo_mb' => 100,
                 'obrigatorio' => false,
                 'ordem_exibicao' => 5,
@@ -56,7 +56,7 @@ class TipoDocumentoSeeder extends Seeder
             [
                 'nome' => 'Apresentação',
                 'descricao' => 'Slides da apresentação para defesa',
-                'extensoes_permitidas' => json_encode(['.ppt', '.pptx', '.pdf']),
+                'extensoes_permitidas' => '[".ppt", ".pptx", ".pdf"]',
                 'tamanho_maximo_mb' => 20,
                 'obrigatorio' => false,
                 'ordem_exibicao' => 6,
@@ -64,7 +64,7 @@ class TipoDocumentoSeeder extends Seeder
             [
                 'nome' => 'Ficha Catalográfica',
                 'descricao' => 'Ficha catalográfica do trabalho',
-                'extensoes_permitidas' => json_encode(['.pdf']),
+                'extensoes_permitidas' => '[".pdf"]',
                 'tamanho_maximo_mb' => 5,
                 'obrigatorio' => true,
                 'ordem_exibicao' => 7,
@@ -72,7 +72,7 @@ class TipoDocumentoSeeder extends Seeder
             [
                 'nome' => 'Termo de Autorização',
                 'descricao' => 'Termo de autorização para publicação no repositório',
-                'extensoes_permitidas' => json_encode(['.pdf']),
+                'extensoes_permitidas' => '[".pdf"]',
                 'tamanho_maximo_mb' => 5,
                 'obrigatorio' => true,
                 'ordem_exibicao' => 8,
@@ -80,7 +80,7 @@ class TipoDocumentoSeeder extends Seeder
             [
                 'nome' => 'Folha de Aprovação',
                 'descricao' => 'Folha de aprovação assinada pela banca',
-                'extensoes_permitidas' => json_encode(['.pdf']),
+                'extensoes_permitidas' => '[".pdf"]',
                 'tamanho_maximo_mb' => 5,
                 'obrigatorio' => true,
                 'ordem_exibicao' => 9,
@@ -88,7 +88,7 @@ class TipoDocumentoSeeder extends Seeder
             [
                 'nome' => 'Ata de Defesa',
                 'descricao' => 'Ata da defesa do trabalho',
-                'extensoes_permitidas' => json_encode(['.pdf']),
+                'extensoes_permitidas' => '[".pdf"]',
                 'tamanho_maximo_mb' => 5,
                 'obrigatorio' => true,
                 'ordem_exibicao' => 10,

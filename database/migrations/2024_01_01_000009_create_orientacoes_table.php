@@ -19,6 +19,7 @@ return new class extends Migration
             $table->boolean('ativo')->default(true);
             
             $table->timestamps();
+            $table->softDeletes();
 
             $table->unique(['tcc_id', 'orientador_id']);
             $table->index(['orientador_id', 'ativo']);
