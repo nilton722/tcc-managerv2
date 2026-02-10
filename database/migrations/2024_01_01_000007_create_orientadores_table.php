@@ -15,7 +15,7 @@ return new class extends Migration
             
             $table->enum('titulacao', ['ESPECIALISTA', 'MESTRE', 'DOUTOR', 'POS_DOUTOR']);
             $table->json('areas_atuacao')->nullable();
-            $table->string('lattes_url');
+            $table->string('lattes_url')->nullable();
             $table->string('orcid', 50)->nullable();
             
             $table->integer('max_orientandos')->default(10);

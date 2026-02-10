@@ -61,11 +61,11 @@ class AlunoController extends Controller
     public function store(Request $request): JsonResponse
     {
         // $this->authorize('create', Aluno::class);
-
+        
         $validated = $request->validate([
             'nome_completo' => 'required|string|max:255',
             'email' => 'required|email|unique:usuarios,email',
-            'numero_matricula' => 'required|string|size:14|unique:usuarios,numero_matricula',
+            'bi' => 'required|string|size:14|unique:usuarios,bi',
             'telefone' => 'nullable|string|max:20',
             'password' => 'required|string|min:8',
             'curso_id' => 'required|uuid|exists:cursos,id',
@@ -75,6 +75,7 @@ class AlunoController extends Controller
             'lattes_url' => 'nullable|url|max:500',
             'orcid' => 'nullable|string|max:50',
         ]);
+        
 
         DB::beginTransaction();
 
@@ -84,7 +85,7 @@ class AlunoController extends Controller
                 'instituicao_id' => auth()->user()->instituicao_id,
                 'nome_completo' => $validated['nome_completo'],
                 'email' => $validated['email'],
-                'numero_matricula' => $validated['numero_matricula'],
+                'bi' => $validated['bi'],
                 'telefone' => $validated['telefone'] ?? null,
                 'password' => bcrypt($validated['password']),
                 'tipo_usuario' => 'ALUNO',

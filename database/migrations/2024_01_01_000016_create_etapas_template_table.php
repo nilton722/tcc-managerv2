@@ -20,6 +20,7 @@ return new class extends Migration
             $table->json('documentos_exigidos')->nullable();
             
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index(['template_cronograma_id', 'ordem']);
         });

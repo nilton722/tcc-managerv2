@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrientadorRequest;
 use App\Models\Orientador;
 use App\Models\Usuario;
 use App\Http\Resources\OrientadorResource;
@@ -58,12 +59,13 @@ class OrientadorController extends Controller
         ]);
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(OrientadorRequest $request): JsonResponse
     {
+       // dd("DADOS DE ORIENTADOR: ", $request);
         $validated = $request->validate([
             'nome_completo' => 'required|string|max:255',
             'email' => 'required|email|unique:usuarios,email',
-            'numero_matricula' => 'required|string|size:14|unique:usuarios,numero_matricula',
+            'bi' => 'required|string|size:14|unique:usuarios,bi',
             'telefone' => 'nullable|string|max:20',
             'password' => 'required|string|min:8',
             'departamento_id' => 'required|uuid|exists:departamentos,id',
@@ -82,7 +84,7 @@ class OrientadorController extends Controller
                 'instituicao_id' => auth()->user()->instituicao_id,
                 'nome_completo' => $validated['nome_completo'],
                 'email' => $validated['email'],
-                'numero_matricula' => $validated['numero_matricula'],
+                'bi' => $validated['bi'],
                 'telefone' => $validated['telefone'] ?? null,
                 'password' => bcrypt($validated['password']),
                 'tipo_usuario' => 'ORIENTADOR',
@@ -229,8 +231,9 @@ class OrientadorController extends Controller
         ]);
     }
 
-    public function disponiveis(Request $request): JsonResponse
+    public function disponiveis(Request $request, string $id): JsonResponse
     {
+        
         $orientadores = Orientador::with(['usuario', 'departamento'])
             ->ativos()
             ->disponiveis()

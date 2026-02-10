@@ -36,6 +36,7 @@ return new class extends Migration
             $table->boolean('enviado')->default(false);
             
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index(['usuario_id', 'lida']);
             $table->index(['entidade_tipo', 'entidade_id']);

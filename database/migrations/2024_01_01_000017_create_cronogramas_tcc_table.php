@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('data_fim_prevista');
             
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index('tcc_id');
         });

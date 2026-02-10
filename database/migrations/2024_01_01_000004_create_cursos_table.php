@@ -15,7 +15,7 @@ return new class extends Migration
             
             $table->string('nome');
             $table->string('codigo', 50)->unique();
-            $table->enum('nivel', ['GRADUACAO', 'ESPECIALIZACAO', 'MESTRADO', 'DOUTORADO']);
+            $table->enum('nivel', ['GRADUACAO','LICENCIATURA', 'ESPECIALIZACAO', 'MESTRADO', 'DOUTORADO'])->default('LICENCIATURA');
             $table->integer('duracao_semestres')->nullable();
             $table->boolean('ativo')->default(true);
             

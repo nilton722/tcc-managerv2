@@ -159,7 +159,7 @@ class DocumentoController extends Controller
         ]);
     }
 
-    public function destroy(string $id): JsonResponse
+    public function destroy(string $tccId, string $id): JsonResponse
     {
         $documento = Documento::findOrFail($id);
 
@@ -178,7 +178,7 @@ class DocumentoController extends Controller
         ]);
     }
 
-    public function aprovar(Request $request, string $id): JsonResponse
+    public function aprovar(Request $request, string $tccId, string $id): JsonResponse
     {
         $documento = Documento::findOrFail($id);
 
@@ -197,7 +197,7 @@ class DocumentoController extends Controller
         ]);
     }
 
-    public function rejeitar(Request $request, string $id): JsonResponse
+    public function rejeitar(Request $request, string $tccId, string $id): JsonResponse
     {
         $documento = Documento::findOrFail($id);
 
@@ -216,7 +216,7 @@ class DocumentoController extends Controller
         ]);
     }
 
-    public function download(string $id)
+    public function download (string $tccId, string $id)
     {
         $documento = Documento::findOrFail($id);
 
@@ -235,7 +235,7 @@ class DocumentoController extends Controller
         );
     }
 
-    public function verificarIntegridade(string $id): JsonResponse
+    public function verificarIntegridade(string $tccId, string $id): JsonResponse
     {
         $documento = Documento::findOrFail($id);
 

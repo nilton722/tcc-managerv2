@@ -43,18 +43,20 @@ class BancaController extends Controller
 
         // $this->authorize('manageBancas', $tcc);
 
+        
+
         $validated = $request->validate([
             'tipo_banca' => 'required|in:QUALIFICACAO,DEFESA_FINAL',
             'data_agendada' => 'required|date|after:now',
             'local' => 'nullable|string|max:500',
             'formato' => 'required|in:PRESENCIAL,REMOTA,HIBRIDA',
-            'link_reuniao' => 'nullable|url|max:500',
+            'link_reuniao' => 'nullable|required_if:formato,REMOTA,HIBRIDA|url|max:500',
             'membros' => 'required|array|min:3',
             'membros.*.usuario_id' => 'required|uuid|exists:usuarios,id',
             'membros.*.tipo_participacao' => 'required|in:PRESIDENTE,ORIENTADOR,EXAMINADOR_INTERNO,EXAMINADOR_EXTERNO,SUPLENTE',
             'membros.*.instituicao_externa' => 'nullable|string|max:255',
         ]);
-
+        
         // Validar se tem orientador
         if (!$tcc->temOrientador()) {
             return response()->json([
@@ -310,12 +312,13 @@ class BancaController extends Controller
     {
         $banca = Banca::where('tcc_id', $tccId)->findOrFail($id);
 
+       
         $validated = $request->validate([
             'usuario_id' => 'required|uuid|exists:usuarios,id',
             'tipo_participacao' => 'required|in:PRESIDENTE,ORIENTADOR,EXAMINADOR_INTERNO,EXAMINADOR_EXTERNO,SUPLENTE',
             'instituicao_externa' => 'nullable|string|max:255',
         ]);
-
+ 
         // Verificar duplicação
         $existe = MembroBanca::where('banca_id', $id)
             ->where('usuario_id', $validated['usuario_id'])

@@ -13,7 +13,7 @@ class AlunoResource extends JsonResource
                 'id' => $this->usuario->id,
                 'nome_completo' => $this->usuario->nome_completo,
                 'email' => $this->usuario->email,
-                'numero_matricula' => $this->usuario->numero_matricula,
+                'bi' => $this->usuario->bi,
                 'telefone' => $this->usuario->telefone,
                 'status' => $this->usuario->status,
             ],

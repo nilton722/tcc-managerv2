@@ -15,8 +15,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('nome_completo');
-            $table->string('numero_matricula', 20);
-            $table->unique(['numero_matricula', 'instituicao_id']);
+            $table->string('bi', 20);
+            $table->unique(['bi', 'instituicao_id']);
             
             $table->string('telefone', 20)->nullable();
             $table->string('foto_perfil_url')->nullable();

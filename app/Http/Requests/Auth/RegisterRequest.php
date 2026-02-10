@@ -20,7 +20,7 @@ class RegisterRequest extends FormRequest
             'instituicao_id' => 'required|uuid|exists:instituicoes,id',
             'nome_completo' => 'required|string|max:255',
             'email' => 'required|email|unique:usuarios,email',
-            'numero_matricula' => 'required|string|size:14|unique:usuarios,numero_matricula',
+            'bi' => 'required|string|size:14|unique:usuarios,bi',
             'telefone' => 'nullable|string|max:20',
             'password' => 'required|string|min:8|confirmed',
             'tipo_usuario' => 'required|in:ALUNO,ORIENTADOR',
@@ -48,10 +48,10 @@ class RegisterRequest extends FormRequest
             'email.unique' => 'Este e-mail já está em uso.',
 
             // Número de matrícula (usuário)
-            'numero_matricula.required' => 'O número de matrícula é obrigatório.',
-            'numero_matricula.string' => 'O número de matrícula deve ser um texto.',
-            'numero_matricula.size' => 'O número de matrícula deve conter exatamente 14 caracteres.',
-            'numero_matricula.unique' => 'Este número de matrícula já está cadastrado.',
+            'bi.required' => 'O número de matrícula é obrigatório.',
+            'bi.string' => 'O número de matrícula deve ser um texto.',
+            'bi.size' => 'O número de matrícula deve conter exatamente 14 caracteres.',
+            'bi.unique' => 'Este número de matrícula já está cadastrado.',
 
             // Telefone
             'telefone.string' => 'O telefone deve ser um texto válido.',

@@ -22,6 +22,7 @@ return new class extends Migration
             
             $table->timestamp('data_avaliacao')->useCurrent();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index(['banca_id', 'membro_banca_id']);
         });

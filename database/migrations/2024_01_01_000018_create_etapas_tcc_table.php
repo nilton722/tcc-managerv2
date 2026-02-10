@@ -34,6 +34,7 @@ return new class extends Migration
             $table->text('observacoes')->nullable();
             
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index(['cronograma_tcc_id', 'ordem']);
             $table->index('status');

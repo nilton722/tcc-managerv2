@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\OrientadorController;
 use App\Http\Controllers\Api\CursoController;
 use App\Http\Controllers\Api\NotificacaoController;
 use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\RelatorioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -107,13 +108,24 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
         });
     });
 
-    // Relatórios
-    Route::prefix('relatorios')->middleware('can:viewReports')->group(function () {
+    // Relatórios e Documentos
+    Route::prefix('relatorios')->middleware('auth:sanctum')->group(function () {
         Route::get('tccs', [TccController::class, 'relatorio']);
         Route::get('orientadores', [OrientadorController::class, 'relatorio']);
         Route::get('alunos', [AlunoController::class, 'relatorio']);
+        
+        Route::get('calendario-defesas', [RelatorioController::class, 'calendarioDefesas']);
+        Route::get('tccs-recomendacoes', [RelatorioController::class, 'tccsComRecomendacoes']);
+        Route::get('matriz-defesa/{bancaId}', [RelatorioController::class, 'matrizDefesa']);
+        Route::get('certificado/{tccId}', [RelatorioController::class, 'certificado']);
+        Route::get('ata-defesa/{bancaId}', [RelatorioController::class, 'ataDefesa']);
+        Route::get('lista-presenca/{bancaId}', [RelatorioController::class, 'listaPresenca']);
+        Route::get('estatisticas-curso/{cursoId}', [RelatorioController::class, 'estatisticasCurso']);
+        Route::get('orientacoes', [RelatorioController::class, 'relatorioOrientacoes']);
+        Route::get('declaracao-orientacao/{orientacaoId}', [RelatorioController::class, 'declaracaoOrientacao']);
+        Route::get('geral', [RelatorioController::class, 'relatorioGeral']);
+        Route::get('comprovante-submissao/{tccId}', [RelatorioController::class, 'comprovanteSubmissao']);
     });
-
     // Alunos
     Route::prefix('alunos')->group(function () {
         Route::get('/', [AlunoController::class, 'index']);
@@ -131,7 +143,7 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
         Route::put('{id}', [OrientadorController::class, 'update']);
         Route::delete('{id}', [OrientadorController::class, 'destroy']);
         Route::get('{id}/tccs', [OrientadorController::class, 'tccs']);
-        Route::get('disponiveis', [OrientadorController::class, 'disponiveis']);
+        Route::get('{id?}/disponiveis', [OrientadorController::class, 'disponiveis']);
     });
 
     // Cursos

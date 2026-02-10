@@ -146,6 +146,7 @@ class Curso extends BaseModel
             'ESPECIALIZACAO' => 'Especialização',
             'MESTRADO' => 'Mestrado',
             'DOUTORADO' => 'Doutorado',
+            'LICENCIATURA' => 'Licenciatura',
             default => $this->nivel,
         };
     }

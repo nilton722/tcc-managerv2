@@ -30,7 +30,7 @@ class Usuario extends Authenticatable
         'email',
         'password',
         'nome_completo',
-        'numero_matricula',
+        'bi',
         'telefone',
         'foto_perfil_url',
         'tipo_usuario',

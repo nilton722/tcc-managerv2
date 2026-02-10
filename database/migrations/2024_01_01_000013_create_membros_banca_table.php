@@ -26,6 +26,7 @@ return new class extends Migration
             $table->boolean('presente')->nullable();
             
             $table->timestamps();
+            $table->softDeletes();
 
             $table->unique(['banca_id', 'usuario_id']);
             $table->index(['usuario_id', 'confirmado']);

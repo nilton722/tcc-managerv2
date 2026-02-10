@@ -20,7 +20,7 @@ class AuthService
                 'instituicao_id' => $data['instituicao_id'],
                 'nome_completo' => $data['nome_completo'],
                 'email' => $data['email'],
-                'numero_matricula' => $data['numero_matricula'],
+                'bi' => $data['bi'],
                 'telefone' => $data['telefone'] ?? null,
                 'password' => Hash::make($data['password']),
                 'tipo_usuario' => $data['tipo_usuario'],

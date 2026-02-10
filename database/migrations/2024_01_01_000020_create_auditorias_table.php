@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('user_agent')->nullable();
             
             $table->timestamp('created_at')->useCurrent();
+            $table->softDeletes();
 
             $table->index(['usuario_id', 'created_at']);
             $table->index(['entidade', 'entidade_id']);
