@@ -117,6 +117,21 @@ class Tcc extends BaseModel
         ]);
     }
 
+    /**
+     * Formata o tipo de trabalho para exibição
+     */
+    public function getTipoFormatado(): string
+    {
+        $tipos = [
+            'TCC' => 'Trabalho de Conclusão de Curso',
+            'MONOGRAFIA' => 'Monografia',
+            'DISSERTACAO' => 'Dissertação',
+            'TESE' => 'Tese'
+        ];
+
+        return $tipos[$this->tipo_trabalho] ?? $this->tipo_trabalho;
+    }
+
     public function scopeConcluidos($query)
     {
         return $query->whereIn('status', [

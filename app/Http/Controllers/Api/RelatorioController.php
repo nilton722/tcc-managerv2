@@ -105,6 +105,8 @@ class RelatorioController extends Controller
             },
         ]);
 
+        // dd("tccs-recomendacoes: ", $query);
+
         // TCCs que precisam de correção
         $query->where(function ($q) {
             $q->where('status', 'APROVADO_COM_RESSALVAS')
@@ -274,6 +276,7 @@ class RelatorioController extends Controller
         return $pdf->download('lista-presenca-' . $banca->id . '.pdf');
     }
 
+
     /**
      * Relatório Estatístico por Curso
      */
@@ -297,6 +300,7 @@ class RelatorioController extends Controller
 
         return $pdf->download('estatisticas-' . str_slug($curso->nome) . '.pdf');
     }
+
 
     /**
      * Relatório de Orientações (para orientador)
@@ -330,6 +334,7 @@ class RelatorioController extends Controller
         return $pdf->download('relatorio-orientacoes-' . now()->format('Y-m-d') . '.pdf');
     }
 
+
     /**
      * Declaração de Orientação
      */
@@ -351,6 +356,8 @@ class RelatorioController extends Controller
 
         return $pdf->download('declaracao-orientacao-' . $orientacao->id . '.pdf');
     }
+
+
 
     /**
      * Relatório Geral do Sistema (Admin)
@@ -378,6 +385,7 @@ class RelatorioController extends Controller
         return $pdf->download('relatorio-geral-' . now()->format('Y-m-d') . '.pdf');
     }
 
+
     /**
      * Comprovante de Submissão de TCC
      */
@@ -399,3 +407,4 @@ class RelatorioController extends Controller
         return $pdf->download('comprovante-submissao-' . $tcc->id . '.pdf');
     }
 }
+
